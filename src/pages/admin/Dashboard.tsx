@@ -1,63 +1,70 @@
 
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, FileText, Eye, ArrowUp, ArrowDown, Settings } from 'lucide-react';
+import { Users, FileText, Eye, ArrowUp, ArrowDown, Settings, Server, Zap, Clock } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 const Dashboard = () => {
   // Mock data for charts
-  const visitorData = [
-    { name: 'Jan', value: 1200 },
-    { name: 'Feb', value: 1900 },
-    { name: 'Mar', value: 1500 },
-    { name: 'Apr', value: 2400 },
-    { name: 'May', value: 2700 },
-    { name: 'Jun', value: 3000 },
-    { name: 'Jul', value: 2500 },
+  const playerData = [
+    { name: 'Mon', value: 48 },
+    { name: 'Tue', value: 62 },
+    { name: 'Wed', value: 51 },
+    { name: 'Thu', value: 88 },
+    { name: 'Fri', value: 103 },
+    { name: 'Sat', value: 142 },
+    { name: 'Sun', value: 125 },
   ];
 
   return (
     <AdminLayout>
       <div className="space-y-6">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <h1 className="text-3xl font-bold">Server Dashboard</h1>
         <p className="text-muted-foreground">
-          Welcome to your admin portal. Here's an overview of your website's performance.
+          Welcome to your Minecraft server control panel. Monitor performance and player activity.
         </p>
         
         {/* Stats cards */}
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <StatCard 
-            title="Total Users" 
-            value="12,345" 
-            description="Active users on the platform"
-            change={15}
+            title="Online Players" 
+            value="42" 
+            description="Currently active on the server"
+            change={8}
             icon={<Users className="h-5 w-5" />}
           />
           <StatCard 
-            title="Content Pieces" 
-            value="348" 
-            description="Articles, pages and posts"
-            change={-3}
-            icon={<FileText className="h-5 w-5" />}
+            title="Server Uptime" 
+            value="99.8%" 
+            description="Last 30 days"
+            change={0.2}
+            icon={<Server className="h-5 w-5" />}
           />
           <StatCard 
-            title="Page Views" 
-            value="87,429" 
-            description="Total views this month"
-            change={23}
-            icon={<Eye className="h-5 w-5" />}
+            title="TPS" 
+            value="19.8" 
+            description="Ticks per second"
+            change={-0.1}
+            icon={<Zap className="h-5 w-5" />}
+          />
+          <StatCard 
+            title="Average Playtime" 
+            value="2.4h" 
+            description="Per player this week"
+            change={0.3}
+            icon={<Clock className="h-5 w-5" />}
           />
         </div>
         
         {/* Chart */}
         <Card>
           <CardHeader>
-            <CardTitle>Website Traffic</CardTitle>
-            <CardDescription>Monthly visitor statistics</CardDescription>
+            <CardTitle>Player Activity</CardTitle>
+            <CardDescription>Daily active players this week</CardDescription>
           </CardHeader>
           <CardContent className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={visitorData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+              <LineChart data={playerData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ddd" vertical={false} />
                 <XAxis dataKey="name" tickLine={false} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
@@ -67,7 +74,7 @@ const Dashboard = () => {
                 <Line 
                   type="monotone" 
                   dataKey="value" 
-                  stroke="#3B82F6" 
+                  stroke="#60A5FA" 
                   strokeWidth={2} 
                   dot={{ r: 4 }} 
                   activeDot={{ r: 6 }}
@@ -80,8 +87,8 @@ const Dashboard = () => {
         {/* Recent activity */}
         <Card>
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>The latest actions on your website</CardDescription>
+            <CardTitle>Server Activity</CardTitle>
+            <CardDescription>The latest events on your Minecraft server</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -103,7 +110,7 @@ const Dashboard = () => {
           </CardContent>
           <CardFooter className="border-t">
             <a href="#" className="text-sm text-primary hover:underline">
-              View all activity
+              View all server logs
             </a>
           </CardFooter>
         </Card>
@@ -145,7 +152,7 @@ const StatCard = ({ title, value, description, change, icon }: StatCardProps) =>
           <span className={isPositive ? "text-green-500" : "text-red-500"}>
             {Math.abs(change)}% {isPositive ? "increase" : "decrease"}
           </span>
-          <span className="text-muted-foreground ml-1">from last month</span>
+          <span className="text-muted-foreground ml-1">from yesterday</span>
         </div>
       </CardFooter>
     </Card>
@@ -154,32 +161,32 @@ const StatCard = ({ title, value, description, change, icon }: StatCardProps) =>
 
 const activityItems = [
   {
-    title: "New user registered",
-    description: "John Smith created a new account",
+    title: "New player joined",
+    description: "MinecraftPro123 joined the server for the first time",
     time: "10 minutes ago",
     icon: <Users className="h-5 w-5 text-white" />,
     bgColor: "bg-blue-500"
   },
   {
-    title: "Content updated",
-    description: "Homepage hero section was modified",
+    title: "World backup",
+    description: "Automatic world backup completed successfully",
     time: "2 hours ago",
     icon: <FileText className="h-5 w-5 text-white" />,
-    bgColor: "bg-purple-500"
+    bgColor: "bg-green-500"
   },
   {
-    title: "New comment",
-    description: "Sarah left a comment on 'Our Services'",
+    title: "Player report",
+    description: "DiamondMiner filed a report against TNTLover",
     time: "5 hours ago",
     icon: <FileText className="h-5 w-5 text-white" />,
-    bgColor: "bg-teal-500"
+    bgColor: "bg-amber-500"
   },
   {
-    title: "System update",
-    description: "System was updated to version 2.1.0",
+    title: "Server restart",
+    description: "Scheduled server maintenance completed",
     time: "1 day ago",
     icon: <Settings className="h-5 w-5 text-white" />,
-    bgColor: "bg-amber-500"
+    bgColor: "bg-purple-500"
   },
 ];
 

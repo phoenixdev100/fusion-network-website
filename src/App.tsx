@@ -9,6 +9,8 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import Users from "./pages/admin/Users";
+import Content from "./pages/admin/Content";
+import Server from "./pages/admin/Server";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/content" element={<Content />} />
+          <Route path="/admin/server" element={<Server />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

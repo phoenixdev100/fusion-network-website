@@ -95,12 +95,13 @@
   }
 }
 
+/* Minecraft-inspired effects */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-fusion-primary to-fusion-secondary;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#44A675] to-[#3B82F6];
 }
 
 .gradient-bg {
-  @apply bg-gradient-to-r from-fusion-primary to-fusion-secondary;
+  @apply bg-gradient-to-r from-[#44A675] to-[#3B82F6];
 }
 
 .card-hover {
@@ -113,9 +114,50 @@
 
 .btn-glow::after {
   content: '';
-  @apply absolute inset-0 rounded-md bg-gradient-to-r from-fusion-primary to-fusion-secondary opacity-0 transition-opacity duration-300;
+  @apply absolute inset-0 rounded-md bg-gradient-to-r from-[#44A675] to-[#3B82F6] opacity-0 transition-opacity duration-300;
 }
 
 .btn-glow:hover::after {
   @apply opacity-30;
+}
+
+/* Minecraft-style blocky border effect */
+.minecraft-border {
+  border-style: solid;
+  border-width: 4px;
+  border-color: #555 #FFF #FFF #555;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Pixel fade-in effect */
+.pixel-fade {
+  image-rendering: pixelated;
+  animation: pixel-fade-in 0.8s ease-out forwards;
+}
+
+@keyframes pixel-fade-in {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+/* Progress bar Minecraft style */
+.minecraft-progress {
+  height: 20px;
+  border: 2px solid #555;
+  background: #333;
+  padding: 2px;
+}
+
+.minecraft-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #44A675, #3B82F6);
+  transition: width 0.3s ease;
 }

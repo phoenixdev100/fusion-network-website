@@ -10,7 +10,9 @@ import {
   LogOut, 
   Menu, 
   X,
-  Home
+  Home,
+  Server,
+  Gamepad2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
@@ -64,16 +66,16 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
       {/* Sidebar for desktop */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-sidebar border-r shadow-sm transition-transform duration-300 ease-in-out lg:static lg:translate-x-0",
+          "fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-[#1A1F2C] text-white border-r border-[#2D3748] shadow-sm transition-transform duration-300 ease-in-out lg:static lg:translate-x-0",
           !isSidebarOpen && "-translate-x-full"
         )}
       >
-        <div className="flex h-16 items-center border-b px-6">
+        <div className="flex h-16 items-center border-b border-[#2D3748] px-6">
           <Link to="/admin" className="flex items-center gap-2 font-semibold">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-fusion-primary to-fusion-secondary flex items-center justify-center">
-              <span className="text-white font-bold">FN</span>
+            <div className="h-8 w-8 rounded-md bg-gradient-to-r from-[#44A675] to-[#3B82F6] flex items-center justify-center">
+              <Gamepad2 className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">Admin</span>
+            <span className="text-xl font-bold text-white">MC Control</span>
           </Link>
         </div>
         <nav className="flex-1 space-y-1 p-4">
@@ -86,7 +88,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           <NavItem 
             to="/admin/users" 
             icon={<Users className="h-5 w-5" />} 
-            label="Users" 
+            label="Players" 
             isActive={location.pathname === '/admin/users'}
           />
           <NavItem 
@@ -101,10 +103,16 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
             label="Settings" 
             isActive={location.pathname === '/admin/settings'}
           />
+          <NavItem 
+            to="/admin/server" 
+            icon={<Server className="h-5 w-5" />} 
+            label="Server Controls" 
+            isActive={location.pathname === '/admin/server'}
+          />
         </nav>
-        <div className="border-t p-4">
+        <div className="border-t border-[#2D3748] p-4">
           <Link to="/">
-            <Button variant="outline" className="w-full justify-start mb-2 gap-2">
+            <Button variant="outline" className="w-full justify-start mb-2 gap-2 bg-[#2D3748] border-[#4A5568] hover:bg-[#4A5568] text-white">
               <Home className="h-4 w-4" />
               Back to Website
             </Button>
@@ -132,7 +140,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           >
             {isSidebarOpen ? <X /> : <Menu />}
           </Button>
-          <div className="flex-1 text-lg font-semibold">Admin Portal</div>
+          <div className="flex-1 text-lg font-semibold">Minecraft Server Admin</div>
           <div className="flex items-center gap-4">
             <Button 
               variant="outline" 
@@ -177,8 +185,8 @@ const NavItem = ({ to, icon, label, isActive }: NavItemProps) => {
       className={cn(
         "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
         isActive
-          ? "bg-sidebar-accent text-sidebar-accent-foreground"
-          : "text-sidebar-foreground/60 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+          ? "bg-[#44A675] text-white"
+          : "text-gray-300 hover:bg-[#2D3748] hover:text-white"
       )}
     >
       {icon}
