@@ -91,7 +91,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
 }
 
@@ -102,6 +102,12 @@
 
 .gradient-bg {
   @apply bg-gradient-to-r from-[#44A675] to-[#3B82F6];
+}
+
+.minecraft-text {
+  font-family: 'Minecraft', monospace;
+  text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+  letter-spacing: 1px;
 }
 
 .card-hover {
@@ -123,10 +129,19 @@
 
 /* Minecraft-style blocky border effect */
 .minecraft-border {
-  border-style: solid;
-  border-width: 4px;
-  border-color: #555 #FFF #FFF #555;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 
+    0 4px 0 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.minecraft-border:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 0 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 /* Pixel fade-in effect */
@@ -160,4 +175,90 @@
   height: 100%;
   background: linear-gradient(to right, #44A675, #3B82F6);
   transition: width 0.3s ease;
+}
+
+/* Animation effects */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Minecraft-specific animations */
+@keyframes block-appear {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.block-appear {
+  animation: block-appear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes mining {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.mining-animation {
+  animation: mining 0.8s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #44A675, #3B82F6);
+  border-radius: 6px;
+  border: 3px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #50bf89, #4e96ff);
+}
+
+/* Fade-in animation for page transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/minecraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

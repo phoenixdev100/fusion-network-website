@@ -108,7 +108,15 @@ export default {
         'pixelate': {
           '0%': { filter: 'blur(3px)' },
           '100%': { filter: 'blur(0)' }
-        }
+        },
+        'minecraft-bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' }
+        },
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -116,13 +124,18 @@ export default {
         'float': 'float 5s ease-in-out infinite',
         'gradient': 'gradient 5s ease infinite alternate',
         'pixelate-in': 'pixelate 0.5s ease-in-out forwards',
+        'minecraft-bounce': 'minecraft-bounce 2s ease-in-out infinite',
+        'fade-in': 'fade-in 0.3s ease-out forwards',
       },
       backgroundImage: {
         'hero-pattern': 'linear-gradient(to right, rgba(68, 166, 117, 0.8), rgba(59, 130, 246, 0.8))',
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'minecraft-dirt': 'url("/img/dirt_background.png")',
         'minecraft-stone': 'url("/img/stone_background.png")',
-      }
+      },
+      fontFamily: {
+        minecraft: ['Minecraft', 'monospace'],
+      },
     }
   },
   plugins: [require("tailwindcss-animate")],
