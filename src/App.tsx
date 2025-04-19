@@ -9,6 +9,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import UserDashboard from "./pages/user/Dashboard";
 import UserProfile from "./pages/user/Profile";
 import ServerInfo from "./pages/ServerInfo";
@@ -17,6 +18,9 @@ import LeaderBoard from "./pages/LeaderBoard";
 import Rules from "./pages/Rules";
 import Community from "./pages/Community";
 import Support from "./pages/Support";
+import Vote from "./pages/Vote";
+import RequiredMods from "./pages/RequiredMods";
+import SupportedVersions from "./pages/SupportedVersions";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
 import Users from "./pages/admin/Users";
@@ -35,6 +39,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/user/dashboard" element={<UserDashboard />} />
             <Route path="/user/profile" element={<UserProfile />} />
             <Route path="/server-info" element={<ServerInfo />} />
@@ -43,6 +48,9 @@ const App = () => (
             <Route path="/rules" element={<Rules />} />
             <Route path="/community" element={<Community />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/vote" element={<Vote />} />
+            <Route path="/required-mods" element={<RequiredMods />} />
+            <Route path="/versions" element={<SupportedVersions />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/users" element={<Users />} />
