@@ -7,6 +7,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import UserDashboard from "./pages/user/Dashboard";
+import UserProfile from "./pages/user/Profile";
+import ServerInfo from "./pages/ServerInfo";
+import Store from "./pages/Store";
+import LeaderBoard from "./pages/LeaderBoard";
+import Rules from "./pages/Rules";
+import AdminLogin from "./pages/admin/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
 import Users from "./pages/admin/Users";
 import Content from "./pages/admin/Content";
@@ -23,6 +30,13 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/user/dashboard" element={<UserDashboard />} />
+          <Route path="/user/profile" element={<UserProfile />} />
+          <Route path="/server-info" element={<ServerInfo />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<Users />} />
           <Route path="/admin/content" element={<Content />} />
