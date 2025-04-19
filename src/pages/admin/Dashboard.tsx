@@ -1,7 +1,7 @@
 
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, FileText, Eye, ArrowUp, ArrowDown } from 'lucide-react';
+import { Users, FileText, Eye, ArrowUp, ArrowDown, Settings } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 const Dashboard = () => {
