@@ -84,6 +84,8 @@
     "yaml": "2.8.3",
     "picomatch": "4.0.4",
     "brace-expansion": "2.0.3",
-    "flatted": "3.4.2"
+    "flatted": "3.4.2",
+    "esbuild": "0.28.1",
+    "react-router": "6.30.4"
   }
 }
